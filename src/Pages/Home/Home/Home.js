@@ -1,11 +1,12 @@
 import React from 'react';
-import Header from '../../../Shared/Header/Header';
-import Banner from '../../Banner/Banner';
+import Banner from '../Banner/Banner';
+import Info from '../Info/Info';
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            <Info></Info>
         </div>
     );
 };

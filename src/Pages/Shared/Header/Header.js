@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Banner from '../../Home/Banner/Banner';
 
 const Header = () => {
     const menus = <>
