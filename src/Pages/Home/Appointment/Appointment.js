@@ -4,7 +4,7 @@ import appointment from '../../../images/images/appointment.png'
 
 const Appointment = () => {
     return (
-        <div className='mt-44 mb-24'>
+        <div className='mt-44 mb-20'>
             <div style={{ background: `url(${appointment})` }} class="flex justify-center items-center lg:flex-row">
                 <div className='flex-1 hidden lg:block'>
                     <img src={doctor} class=" mt-[-100px]" alt='treatment' />
