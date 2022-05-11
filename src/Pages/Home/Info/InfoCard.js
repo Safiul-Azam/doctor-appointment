@@ -1,16 +1,12 @@
 import React from 'react';
-const InfoCard = ({clockInfo, markerInfo}) => {
-    const {img, title, description} = clockInfo
+const InfoCard = ({img, title, description, bgColor}) => {
     return (
         <div>
-            <div class="card bg-accent lg:card-side shadow-xl">
+            <div class={`card lg:card-side shadow-xl p-5 text-white ${bgColor}`}>
                 <figure><img src={img} alt="Album"/></figure>
                 <div class="card-body">
-                    <h2 class="card-title">New album is released!</h2>
-                    <p>Click the button to listen on Spotiwhy app.</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Listen</button>
-                    </div>
+                    <h2 class="card-title">{title}</h2>
+                    <p>{description}</p>
                 </div>
             </div>
         </div>

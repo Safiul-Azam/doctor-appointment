@@ -4,10 +4,10 @@ const Service = ({service}) => {
     const {name, img, description} = service
     return (
         <div>
-            <div class="card card-compact w-96 bg-base-100 shadow-xl">
+            <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
                 <figure><img src={img} alt="Shoes" /></figure>
-                <div class="card-body">
-                    <h2 class="card-title">{name}</h2>
+                <div class="card-body text-center">
+                    <h2 className='text-sm font-semibold'>{name}</h2>
                     <p>{description}</p>
                 </div>
             </div>
