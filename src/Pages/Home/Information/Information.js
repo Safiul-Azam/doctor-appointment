@@ -5,7 +5,7 @@ import phone from '../../../images/icons/phone.svg'
 
 const Information = () => {
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 mb-12'>
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 mb-12 px-4 lg:px-12'>
             <div class="bg-gradient-to-r from-secondary to-primary card lg:card-side shadow-xl p-3 ">
                 <figure><img src={clock} alt=''/></figure>
                 <div class="card-body">

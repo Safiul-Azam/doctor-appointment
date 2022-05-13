@@ -11,7 +11,7 @@ const allServices = [
 ]
 const Services = () => {
     return (
-        <div className='my-32'>
+        <div className='my-32 px-4 lg:px-12'>
             <h5 className='text-center text-sm font-bold text-secondary'>OUR SERVICES</h5>
             <h2 className='text-center mb-16 text-2xl'>Services We Provide</h2>
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
