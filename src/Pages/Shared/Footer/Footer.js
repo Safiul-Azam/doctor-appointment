@@ -11,7 +11,7 @@ const Footer = () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         }} >
-            <footer className="footer pb-16 pt-10 text-neutral-content">
+            <footer className="footer pb-16 pt-10 text-neutral-content px-12">
                 <div>
                     <span className="footer-title text-accent">Services</span>
                     <Link to="/home" className="link link-hover text-accent">Emergency Checkup</Link>

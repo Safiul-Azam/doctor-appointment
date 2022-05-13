@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from '../Shared/Footer/Footer';
 import chair from '../../images/images/chair.png'
+import { DayPicker } from 'react-day-picker';
+import 'react-day-picker/dist/style.css';
+import { format } from 'date-fns';
 
 const Appointment = () => {
+    const [date, setDate] = useState(new Date())
     return (
         <div>
-            <div className="hero min-h-screen">
-                <div className="hero-content flex-col lg:flex-row-reverse">
+            <div className="hero min-h-screen md:min-h-screen">
+                <div className="hero-content flex lg:flex-row-reverse">
                     <img src={chair} alt='' className="max-w-sm rounded-lg shadow-2xl" />
                     <div>
-                        <h1 className="text-5xl font-bold">Box Office News!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button className="btn btn-primary">Get Started</button>
+                        <DayPicker
+                         styles={{
+                            caption: { color: 'red' }
+                          }}
+                            mode="single"
+                            selected={date}
+                            onSelect={setDate}
+                            />
+                            <p className='text-2xl'>selected date: {date && format(date,"PP")}</p>
                     </div>
                 </div>
             </div>
