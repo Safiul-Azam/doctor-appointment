@@ -3,7 +3,7 @@ import appointment from '../../../images/images/appointment.png'
 
 const Contact = () => {
     return (
-        <div style={{background:`url(${appointment})`}} className='p-16 my-24'>
+    <div style={{background:`url(${appointment})`}} className='p-16 mt-2'>
             <h4 className='text-center text-xl font-bold mb-3 text-secondary '>contact us</h4>
             <h3 className='text-center text-4xl mb-10 text-white'>Stay connected with us</h3>
             <div className='w-6/12 mx-auto'>

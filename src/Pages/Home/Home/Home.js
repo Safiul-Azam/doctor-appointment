@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../../Shared/Footer/Footer';
-import Appointment from '../Appointment/Appointment';
+import Appointment from '../MakeAppointment/MakeAppointment';
 import Banner from '../Banner/Banner';
 import Contact from '../Contact/Contact';
 import Exceptional from '../Exceptional/Exceptional';
@@ -14,7 +14,6 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Information></Information>
-            <Info></Info>
             <Services></Services>
             <Exceptional></Exceptional>
             <Appointment></Appointment>
