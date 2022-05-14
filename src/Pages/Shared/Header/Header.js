@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
@@ -7,9 +7,11 @@ import { signOut } from 'firebase/auth';
 const Header = () => {
     const [user] = useAuthState(auth) 
     const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state?.from?.pathname || "/"
     const handleSignOut = ()=>{
         signOut(auth)
-        navigate('/home')
+        navigate(from ,{replace:true})
     }
     const menus = <>
         <li><Link to='/home'>Home</Link></li>
@@ -23,7 +25,7 @@ const Header = () => {
 
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-base-100 z-10 fixed top-0 shadow-sm">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -36,7 +38,7 @@ const Header = () => {
                     <Link to='/home' className="btn btn-ghost normal-case text-xl">Doctor Appointment</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal p-0 m-2">
+                    <ul className="menu menu-horizontal p-0">
                         {menus}
                     </ul>
                 </div>
