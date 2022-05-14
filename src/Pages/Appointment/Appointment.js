@@ -3,7 +3,7 @@ import Footer from '../Shared/Footer/Footer';
 import chair from '../../images/images/chair.png'
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
-import { format } from 'date-fns';
+import AvailableAppointments from './AvailableAppointments';
 
 const Appointment = () => {
     const [date, setDate] = useState(new Date())
@@ -14,17 +14,14 @@ const Appointment = () => {
                     <img src={chair} alt='' className="max-w-sm rounded-lg shadow-2xl" />
                     <div>
                         <DayPicker
-                         styles={{
-                            caption: { color: 'red' }
-                          }}
                             mode="single"
                             selected={date}
                             onSelect={setDate}
                             />
-                            <p className='text-2xl'>selected date: {date && format(date,"PP")}</p>
                     </div>
                 </div>
             </div>
+            <AvailableAppointments date={date}></AvailableAppointments>
             <Footer></Footer>
         </div>
     );
