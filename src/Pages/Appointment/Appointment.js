@@ -3,15 +3,16 @@ import Footer from '../Shared/Footer/Footer';
 import chair from '../../images/images/chair.png'
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
+import bgChair from '../../images/images/bg.png'
 import AvailableAppointments from './AvailableAppointments';
 
 const Appointment = () => {
     const [date, setDate] = useState(new Date())
     return (
         <div>
-            <div className="hero min-h-screen md:min-h-screen">
-                <div className="hero-content flex lg:flex-row-reverse">
-                    <img src={chair} alt='' className="max-w-sm rounded-lg shadow-2xl" />
+            <div style={{background:`url(${bgChair})`}} className="hero min-h-screen md:min-h-screen">
+                <div className="hero-content flex-col lg:flex-row-reverse">
+                    <img src={chair} alt='' className="max-w-sm rounded-lg shadow-2xl w-full" />
                     <div>
                         <DayPicker
                             mode="single"
