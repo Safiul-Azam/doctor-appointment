@@ -10,7 +10,11 @@ const Appointment = () => {
     const [date, setDate] = useState(new Date())
     return (
         <div>
-            <div style={{background:`url(${bgChair})`}} className="hero min-h-screen md:min-h-screen">
+            <div style={{
+                background:`url(${bgChair})`,
+                backgroundPosition:'center',
+                backgroundSize:'cover'
+                }} className="hero mt-32">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <img src={chair} alt='' className="max-w-sm rounded-lg shadow-2xl w-full" />
                     <div>
