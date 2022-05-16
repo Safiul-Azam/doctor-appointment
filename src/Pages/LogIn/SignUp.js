@@ -25,7 +25,7 @@ const SignUp = () => {
         }
     },[from,navigate,user])
 
-    if(loading){
+    if(updating || loading){
         return <Loading></Loading>
     }
     let signupError;
@@ -39,7 +39,7 @@ const SignUp = () => {
         alert('display update')
     };
     return (
-        <div className='w-1/3 p-8 mx-auto my-14 mt-24 shadow-lg'>
+        <div className='lg:w-1/3 w-full md:w-1/2 p-8 mx-auto my-14 mt-24 shadow-lg'>
             <h3 className='text-2xl text-secondary text-center mb-4'>Signup</h3>
             <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-1 gap-4'>
                 <div className="form-control w-full ">

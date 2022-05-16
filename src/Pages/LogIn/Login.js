@@ -38,7 +38,7 @@ const Login = () => {
       }
      
     return (
-        <div className='w-1/3 p-8 mx-auto mt-24 mb-16 shadow-lg'>
+        <div className='lg:w-1/3 w-full md:w-1/2 p-8 mx-auto mt-24 mb-16 shadow-lg'>
             <h3 className='text-2xl text-secondary text-center mb-4'>login</h3>
             <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-1 gap-4'>
             <div className="form-control w-full ">

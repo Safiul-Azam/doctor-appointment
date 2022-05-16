@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { Link } from 'react-router-dom';
 
-const BookingModal = ({ treatment, setTreatment, date }) => {
+const BookingModal = ({ treatment, setTreatment, date, refetch }) => {
     const MySwal = withReactContent(Swal)
     const [user] = useAuthState(auth)
     const { _id, slots, name } = treatment
@@ -20,7 +20,7 @@ const BookingModal = ({ treatment, setTreatment, date }) => {
             treatment: name,
             date: formattedDate,
             slot,
-            patient: user.name,
+            patient: user.displayName,
             patientEmail: user.email,
             phone,
         }
@@ -44,14 +44,15 @@ const BookingModal = ({ treatment, setTreatment, date }) => {
                 }else{
                     MySwal.fire({
                         icon: 'error',
-                        title: 'Already have an appointment on...',
+                        title: 'Already have an appointment on',
                         text: `${data.booking.date} at ${data.booking.slot}`,
-                        footer: `<Link to="/appointment">Please try another date</Link>`
+                        footer: `<a href="/appointment">Please try another date</a>`
                       })
 
-                }
+                    }
+                    refetch()
+                    setTreatment(null)
             })
-        setTreatment(null)
     }
     return (
         <div>
