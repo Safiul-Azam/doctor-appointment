@@ -23,10 +23,10 @@ const SignUp = () => {
     const [token] = useToken(user)
     
     useEffect(()=>{
-        if (user) {
-            // navigate(from, { replace: true })
+        if (token) {
+            navigate(from, { replace: true })
         }
-    },[from,navigate,user])
+    },[from,navigate,token])
     
     if(updating || loading){
         return <Loading></Loading>
@@ -39,7 +39,6 @@ const SignUp = () => {
           const name = data?.name
         await createUserWithEmailAndPassword(data.email, data.password)
         await updateProfile({displayName:name})
-        alert('display update')
     };
     return (
         <div className='lg:w-1/3 w-full md:w-1/2 p-8 mx-auto my-14 mt-24 shadow-lg'>

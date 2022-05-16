@@ -1,17 +1,35 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const MyAppointment = () => {
-  const [appointment, setAppointment] = useState([])
+  const [appointments, setAppointment] = useState([])
   const [user] = useAuthState(auth)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location?.state?.from?.pathname || '/'
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/booking?patientEmail=${user.email}`)
-        .then(res => res.json())
+      fetch(`http://localhost:5000/booking?patientEmail=${user.email}`,{
+        method:'GET',
+        headers:{
+          'authorization':`Bearer ${localStorage.getItem('accessToken')}`
+        }
+      })
+        .then(res =>{
+          
+          if(res.status === 401 || res.status === 403){
+            signOut(auth)
+            localStorage.removeItem('accessToken')
+            navigate(from, {replace:true})
+          }
+           return res.json()
+          })
         .then(data => setAppointment(data))
     }
-  }, [user])
+  }, [user, navigate, from])
   return (
     <div>
       <div class="overflow-x-auto px-12">
@@ -28,13 +46,13 @@ const MyAppointment = () => {
           </thead>
           <tbody className='border'>
             {
-              appointment.map(booked => <tr>
-                <th>{booked._id}</th>
-                <td>{booked.patient}</td>
-                <td>{booked.patientEmail}</td>
-                <td>{booked.date}</td>
-                <td>{booked.slot}</td>
-                <td>{booked.treatment}</td>
+              appointments.map((appointment,index) => <tr>
+                <th>{appointment._id}</th>
+                <td>{appointment.patient}</td>
+                <td>{appointment.patientEmail}</td>
+                <td>{appointment.date}</td>
+                <td>{appointment.slot}</td>
+                <td>{appointment.treatment}</td>
               </tr>)
             }
           </tbody>

@@ -12,6 +12,7 @@ const Header = () => {
     const handleSignOut = () => {
         signOut(auth)
         navigate(from, { replace: true })
+        localStorage.removeItem('accessToken')
     }
     const menus = <>
         <li><Link to='/home'>Home</Link></li>
