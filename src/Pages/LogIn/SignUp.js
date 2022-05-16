@@ -5,6 +5,7 @@ import auth from '../../firebase.init';
 import SocialLogin from './SocialLogin';
 import { useForm } from "react-hook-form";
 import Loading from '../Shared/Loading/Loading';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -19,12 +20,14 @@ const SignUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [token] = useToken(user)
+    
     useEffect(()=>{
         if (user) {
-            navigate(from, { replace: true })
+            // navigate(from, { replace: true })
         }
     },[from,navigate,user])
-
+    
     if(updating || loading){
         return <Loading></Loading>
     }

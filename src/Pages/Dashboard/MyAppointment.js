@@ -5,8 +5,6 @@ import auth from '../../firebase.init';
 const MyAppointment = () => {
   const [appointment, setAppointment] = useState([])
   const [user] = useAuthState(auth)
-  console.log(appointment)
-
   useEffect(() => {
     if (user) {
       fetch(`http://localhost:5000/booking?patientEmail=${user.email}`)
