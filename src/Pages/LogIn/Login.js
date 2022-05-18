@@ -3,6 +3,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading/Loading';
 import SocialLogin from './SocialLogin';
 
@@ -10,7 +11,6 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
-        console.log(data);
     }
     
     const location = useLocation()
@@ -20,14 +20,15 @@ const Login = () => {
         user,
         loading,
         error,
-      ] = useSignInWithEmailAndPassword(auth);
-      const from = location.state?.from?.pathname || "/";
-      let loginError;
-      useEffect(()=>{
-        if (user) {
+    ] = useSignInWithEmailAndPassword(auth);
+    const [token] = useToken(user)
+    const from = location.state?.from?.pathname || "/";
+    let loginError;
+    useEffect(()=>{
+        if (token) {
             navigate(from, { replace: true })
         }
-    },[from,navigate,user])
+    },[from,navigate,token])
 
       if(error){
         loginError = <p className='text-red-500'><small>{error.message}</small></p>

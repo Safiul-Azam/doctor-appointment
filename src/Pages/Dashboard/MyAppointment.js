@@ -7,33 +7,34 @@ import auth from '../../firebase.init';
 const MyAppointment = () => {
   const [appointments, setAppointment] = useState([])
   const [user] = useAuthState(auth)
+  console.log(user)
   const navigate = useNavigate()
   const location = useLocation()
-  const from = location?.state?.from?.pathname || '/'
+  const from = location.state?.from?.pathname || "/";
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/booking?patientEmail=${user.email}`,{
-        method:'GET',
-        headers:{
-          'authorization':`Bearer ${localStorage.getItem('accessToken')}`
+      fetch(`http://localhost:5000/booking?patientEmail=${user?.email}`, {
+        method: 'GET',
+        headers: {
+          'authorization': `Bearer ${localStorage.getItem('accessToken')}`
         }
       })
-        .then(res =>{
-          
-          if(res.status === 401 || res.status === 403){
+        .then(res => {
+          console.log(res)
+          if (res.status === 401 || res.status === 403) {
             signOut(auth)
             localStorage.removeItem('accessToken')
-            navigate(from, {replace:true})
+            navigate(from, { replace: true })
           }
-           return res.json()
-          })
+          return res.json()
+        })
         .then(data => setAppointment(data))
     }
   }, [user, navigate, from])
   return (
     <div>
-      <div class="overflow-x-auto px-12">
-        <table class="table border-2 w-full">
+      <div className="overflow-x-auto px-12">
+        <table className="table border-2 w-full">
           <thead>
             <tr>
               <th>_id</th>
@@ -46,7 +47,7 @@ const MyAppointment = () => {
           </thead>
           <tbody className='border'>
             {
-              appointments.map((appointment,index) => <tr>
+              appointments.map((appointment, index) => <tr>
                 <th>{appointment._id}</th>
                 <td>{appointment.patient}</td>
                 <td>{appointment.patientEmail}</td>

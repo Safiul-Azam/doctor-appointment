@@ -23,7 +23,7 @@ const Header = () => {
         {
             user && <li><Link to='/dashboard'>Dashboard</Link></li>
         }
-        {user ? <li><button onClick={handleSignOut}>sign Out</button></li> :
+        {user ? <li><button onClick={handleSignOut}>sign Out <span>{user.displayName}</span></button></li> :
             <li><Link to='/login'>Login</Link></li>}
     </>
 

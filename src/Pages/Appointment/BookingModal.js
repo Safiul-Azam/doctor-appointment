@@ -12,6 +12,7 @@ const BookingModal = ({ treatment, setTreatment, date, refetch }) => {
     const { _id, slots, name } = treatment
     const formattedDate = format(date, 'PP')
     const handleBooking = e => {
+        console.log('clicked')
         e.preventDefault()
         const slot = e.target.slot.value
         const phone = e.target.number.value
@@ -59,7 +60,7 @@ const BookingModal = ({ treatment, setTreatment, date, refetch }) => {
             <input type="checkbox" id="booking-modal" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
-                    <label htmlhtmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="font-semibold text-2xl text-accent">{name}</h3>
                     <form onSubmit={handleBooking} className='text-accent grid grid-cols-1 gap-3 justify-items-center my-10'>
                         <input name='date' type="text" disabled value={date && format(date, 'PP')} className="input input-bordered w-full text-lg font-semibold" />
