@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const BookingModal = ({ treatment, setTreatment, date, refetch }) => {
     const MySwal = withReactContent(Swal)
     const [user] = useAuthState(auth)
-    const { _id, slots, name } = treatment
+    const { _id, slots, name, price } = treatment
     const formattedDate = format(date, 'PP')
     const handleBooking = e => {
         console.log('clicked')
@@ -21,6 +21,7 @@ const BookingModal = ({ treatment, setTreatment, date, refetch }) => {
             treatment: name,
             date: formattedDate,
             slot,
+            price:price,
             patient: user.displayName,
             patientEmail: user.email,
             phone,
@@ -71,6 +72,7 @@ const BookingModal = ({ treatment, setTreatment, date, refetch }) => {
                         </select>
                         <input name='name' type="text" disabled value={user?.displayName || ''} className="input input-bordered w-full text-lg font-semibold" />
                         <input name='email' type="email" disabled value={user?.email || ''} className="input input-bordered w-full text-lg font-semibold" />
+                        <input name='price' type="number" disabled value={ price || ''} className="input input-bordered w-full text-lg font-semibold" />
                         <input name='number' type="text" placeholder="Phone Number" className="input input-bordered w-full text-lg font-semibold" />
                         <input type="submit" value='SUBMIT' className="btn btn-secondary w-full" />
                     </form>

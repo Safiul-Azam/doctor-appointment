@@ -1,13 +1,12 @@
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const MyAppointment = () => {
   const [appointments, setAppointment] = useState([])
   const [user] = useAuthState(auth)
-  console.log(user)
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || "/";
@@ -43,18 +42,24 @@ const MyAppointment = () => {
               <th>Date</th>
               <th>Slot</th>
               <th>Treatment</th>
+              <th>Pay</th>
             </tr>
           </thead>
           <tbody className='border'>
             {
-              appointments.map((appointment, index) => <tr>
-                <th>{appointment._id}</th>
+              appointments.map((appointment, index) => <tr
+                key={index}
+              >
+                <th>{index + 1}</th>
                 <td>{appointment.patient}</td>
                 <td>{appointment.patientEmail}</td>
                 <td>{appointment.date}</td>
                 <td>{appointment.slot}</td>
                 <td>{appointment.treatment}</td>
-                <td>{appointment.treatment}</td>
+                <td>
+                  {appointment.price && <Link to={`/dashboard/payment/${appointment._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}
+                </td>
+
               </tr>)
             }
           </tbody>
