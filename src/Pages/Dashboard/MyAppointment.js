@@ -23,7 +23,7 @@ const MyAppointment = () => {
           if (res.status === 401 || res.status === 403) {
             signOut(auth)
             localStorage.removeItem('accessToken')
-            navigate(from, { replace: true })
+            navigate('/login')
           }
           return res.json()
         })

@@ -28,14 +28,14 @@ const ManageSingleDoctor = ({ singleDoctor,index,refetch }) => {
     return (
         <tr>
             <th>{index + 1}</th>
-            <td><div class="avatar">
-                <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <td><div className="avatar">
+                <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     <img src={img} alt={name} />
                 </div>
             </div></td>
             <td>{name}</td>
             <td>{specialty}</td>
-            <td><button onClick={handleDeleteDoctor} class="btn btn-xs btn-error">delete</button></td>
+            <td><button onClick={handleDeleteDoctor} className="btn btn-xs btn-error">delete</button></td>
         </tr>
     );
 };

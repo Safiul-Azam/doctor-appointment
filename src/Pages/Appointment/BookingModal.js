@@ -4,7 +4,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import { Link } from 'react-router-dom';
 
 const BookingModal = ({ treatment, setTreatment, date, refetch }) => {
     const MySwal = withReactContent(Swal)
@@ -12,7 +11,6 @@ const BookingModal = ({ treatment, setTreatment, date, refetch }) => {
     const { _id, slots, name, price } = treatment
     const formattedDate = format(date, 'PP')
     const handleBooking = e => {
-        console.log('clicked')
         e.preventDefault()
         const slot = e.target.slot.value
         const phone = e.target.number.value

@@ -14,8 +14,6 @@ const AddDoctor = () => {
     if(isLoading){
         return <Loading></Loading>
     }
-
-
     //api key from imgBB
     const imageStorageKey = 'd30cbfe4a2fb6ef6a0ff1a48904eda11';
 
